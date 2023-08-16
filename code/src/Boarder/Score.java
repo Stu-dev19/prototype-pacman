@@ -1,7 +1,8 @@
-package sample;
+package Boarder;
 
 
 
+import Boarder.Obstacle;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;

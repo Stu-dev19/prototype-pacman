@@ -1,7 +1,9 @@
-package sample;
+package Enemies;
 
 
 
+import Boarder.Maze;
+import Main.Manager;
 import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -9,7 +11,7 @@ import javafx.scene.shape.Rectangle;
 import java.util.Random;
 
 
-public class Gho extends Rectangle implements Runnable {
+public class Ghost extends Rectangle implements Runnable {
 
     String direction;
     Manager manager;
@@ -17,7 +19,7 @@ public class Gho extends Rectangle implements Runnable {
     AnimationTimer animation;
     int timesWalked;
 
-    public Gho(double x, double y, Color color, Maze maze, Manager manager) {
+    public Ghost(double x, double y, Color color, Maze maze, Manager manager) {
         this.setX(x);
         this.setY(y);
         this.maze = maze;

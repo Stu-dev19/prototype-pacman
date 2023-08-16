@@ -35,16 +35,6 @@ public class Ghost extends Rectangle implements Runnable { // Rectangle class no
 
 
 
-
-
-
-
-
-
-
-
-
-
     private String getRandomDirection(String exclude1, String exclude2) {
         String[] directions = {"left", "right", "up", "down"};
         int rnd = new Random().nextInt(directions.length);

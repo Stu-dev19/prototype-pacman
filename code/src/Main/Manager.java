@@ -5,7 +5,8 @@ package Main;
 import Boarder.Cookie;
 import Boarder.Maze;
 import Boarder.Obstacle;
-import Enemies.Ghost1;
+import Controller.Factory;
+import Enemies.Ghost;
 import Boarder.Score;
 import Player.Pacman;
 import javafx.animation.AnimationTimer;
@@ -14,6 +15,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import java.awt.*;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -37,6 +39,7 @@ public class Manager {
     private boolean gameEnded;
     private int cookiesEaten;
     private static Manager instance;
+    private Factory factory;
 
     private Manager(Group root) { // changed constructor to private
         this.root = root;
@@ -51,6 +54,7 @@ public class Manager {
         this.lifes = 3;
         this.score = 0;
         this.cookiesEaten = 0;
+        this.factory = new Factory(this.maze, root); // infer new factory
     }
 
     // Singleton for Manager object
@@ -117,7 +121,8 @@ public class Manager {
         Integer skip[] = {5, 17};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2*i) + 2.5) * Obstacle.THICKNESS, 2.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2*i) + 2.5) * Obstacle.THICKNESS,
+                        2.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -126,7 +131,8 @@ public class Manager {
         skip = new Integer[]{1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2*i) + 2.5) * Obstacle.THICKNESS, 4.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2*i) + 2.5) * Obstacle.THICKNESS,
+                        4.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -135,7 +141,8 @@ public class Manager {
         skip = new Integer[]{1, 21};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2*i) + 2.5) * Obstacle.THICKNESS, 6.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2*i) + 2.5) * Obstacle.THICKNESS,
+                        6.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -144,7 +151,8 @@ public class Manager {
         skip = new Integer[]{1, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 21};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 8.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2 * i) + 2.5) * Obstacle.THICKNESS,
+                        8.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -153,7 +161,8 @@ public class Manager {
         skip = new Integer[]{1, 7, 8, 9, 10, 11, 12, 13, 14, 15, 21};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2*i) + 2.5) * Obstacle.THICKNESS, 10.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2*i) + 2.5) * Obstacle.THICKNESS,
+                        10.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -162,7 +171,8 @@ public class Manager {
         skip = new Integer[]{3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2*i) + 2.5) * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2*i) + 2.5) * Obstacle.THICKNESS,
+                        12.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -171,7 +181,8 @@ public class Manager {
         skip = new Integer[]{1, 7, 8, 9, 10, 11, 12, 13, 14, 15, 21};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 14.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2 * i) + 2.5) * Obstacle.THICKNESS,
+                        14.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -180,7 +191,8 @@ public class Manager {
         skip = new Integer[]{1, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 21};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 16.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2 * i) + 2.5) * Obstacle.THICKNESS,
+                        16.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -189,7 +201,8 @@ public class Manager {
         skip = new Integer[]{1, 21};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 18.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2 * i) + 2.5) * Obstacle.THICKNESS,
+                        18.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -198,7 +211,8 @@ public class Manager {
         skip = new Integer[]{1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2*i) + 2.5) * Obstacle.THICKNESS, 20.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2*i) + 2.5) * Obstacle.THICKNESS,
+                        20.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -207,7 +221,8 @@ public class Manager {
         skip = new Integer[]{5, 17};
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
-                Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 22.5 * Obstacle.THICKNESS);
+                Cookie cookie = this.factory.createCookie(((2 * i) + 2.5) * Obstacle.THICKNESS,
+                        22.5 * Obstacle.THICKNESS);
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -218,27 +233,20 @@ public class Manager {
         this.scoreBoard = new Score(root);
     }
 
-    public void generateGhosts() {
-        this.ghosts.add(new Ghost(18.5 * Obstacle.THICKNESS,
+    // Create for loop for ghost and cookies with an array for the colors and x variables
+    public void generateGhosts() { // Changed colors for the ghosts and added factory methods
+        this.ghosts.add(this.factory.createGhost(18.5 * Obstacle.THICKNESS,
                 12.5 * Obstacle.THICKNESS,
-                Color.DEEPPINK,
-                maze,
-                root)); // From singleton method added root to parameters
-        this.ghosts.add(new Ghost(22.5 * Obstacle.THICKNESS,
+                Color.PINK)); // From singleton method added root to parameters
+        this.ghosts.add(this.factory.createGhost(22.5 * Obstacle.THICKNESS,
                 12.5 * Obstacle.THICKNESS,
-                Color.GREENYELLOW,
-                maze,
-                root));
-        this.ghosts.add(new Ghost(28.5 * Obstacle.THICKNESS,
+                Color.YELLOW));
+        this.ghosts.add(this.factory.createGhost(28.5 * Obstacle.THICKNESS,
                 12.5 * Obstacle.THICKNESS,
-                Color.BLACK,
-                maze,
-                root));
-        this.ghosts.add(new Ghost(28.5 * Obstacle.THICKNESS,
+                Color.BLACK));
+        this.ghosts.add(this.factory.createGhost(28.5 * Obstacle.THICKNESS,
                 9.5 * Obstacle.THICKNESS,
-                Color.SPRINGGREEN,
-                maze,
-                root));
+                Color.GREEN));
     }
 
     public void movePacman(KeyEvent event) {

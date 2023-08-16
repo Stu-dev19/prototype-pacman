@@ -20,11 +20,11 @@ public class Ghost extends Rectangle implements Runnable { // Rectangle class no
     AnimationTimer animation;
     int timesWalked;
 
-    public Ghost(double x, double y, Color color, Maze maze, Manager manager) {
+    public Ghost(double x, double y, Color color, Maze maze, Group root) { // added root to contructor of Ghost
         this.setX(x);
         this.setY(y);
         this.maze = maze;
-        this.manager = manager;
+        this.manager = Manager.getInstance(root); // Singleton pass
         this.setHeight(50);
         this.setWidth(50);
         this.setFill(color);

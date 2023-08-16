@@ -21,10 +21,11 @@ import java.util.Set;
 
 public class Manager {
 
+    // Member variables
     private Pacman pacman;
     private Group root;
     private Set<Cookie> cookieSet;
-    private Set<Ghost1> ghosts;
+    private Set<Ghost> ghosts;
     private AnimationTimer leftPacmanAnimation;
     private AnimationTimer rightPacmanAnimation;
     private AnimationTimer upPacmanAnimation;
@@ -35,8 +36,9 @@ public class Manager {
     private Score scoreBoard;
     private boolean gameEnded;
     private int cookiesEaten;
+    private static Manager instance;
 
-    Manager(Group root) {
+    private Manager(Group root) { // changed constructor to private
         this.root = root;
         this.maze = new Maze();
         this.pacman = new Pacman(2.5 * Obstacle.THICKNESS, 2.5 * Obstacle.THICKNESS);
@@ -51,12 +53,20 @@ public class Manager {
         this.cookiesEaten = 0;
     }
 
+    // Singleton for Manager object
+    public static Manager getInstance(Group root){
+        if(instance == null){
+            instance = new Manager(root);
+        }
+        return instance;
+    }
+
     private void lifeGone() {
         this.leftPacmanAnimation.stop();
         this.rightPacmanAnimation.stop();
         this.upPacmanAnimation.stop();
         this.downPacmanAnimation.stop();
-        for (Ghost1 ghost : ghosts) {
+        for (Ghost ghost : ghosts) {
             ghost.getAnimation().stop();
         }
         this.pacman.setCenterX(2.5 * Obstacle.THICKNESS);
@@ -209,14 +219,30 @@ public class Manager {
     }
 
     public void generateGhosts() {
-        this.ghosts.add(new Ghost1(18.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.DEEPPINK, maze, this));
-        this.ghosts.add(new Ghost1(22.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.GREENYELLOW, maze, this));
-        this.ghosts.add(new Ghost1(28.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.BLACK, maze, this));
-        this.ghosts.add(new Ghost1(28.5 * Obstacle.THICKNESS, 9.5 * Obstacle.THICKNESS, Color.SPRINGGREEN, maze, this));
+        this.ghosts.add(new Ghost(18.5 * Obstacle.THICKNESS,
+                12.5 * Obstacle.THICKNESS,
+                Color.DEEPPINK,
+                maze,
+                root)); // From singleton method added root to parameters
+        this.ghosts.add(new Ghost(22.5 * Obstacle.THICKNESS,
+                12.5 * Obstacle.THICKNESS,
+                Color.GREENYELLOW,
+                maze,
+                root));
+        this.ghosts.add(new Ghost(28.5 * Obstacle.THICKNESS,
+                12.5 * Obstacle.THICKNESS,
+                Color.BLACK,
+                maze,
+                root));
+        this.ghosts.add(new Ghost(28.5 * Obstacle.THICKNESS,
+                9.5 * Obstacle.THICKNESS,
+                Color.SPRINGGREEN,
+                maze,
+                root));
     }
 
     public void movePacman(KeyEvent event) {
-        for (Ghost1 ghost : this.ghosts) {
+        for (Ghost ghost : this.ghosts) {
             ghost.run();
         }
         switch(event.getCode()) {

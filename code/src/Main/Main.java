@@ -24,21 +24,6 @@ public class Main extends Application {
         root.getChildren().add( canvas );
         Manager manager = new Manager(root);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         manager.drawMaze();
 
         sc.addEventHandler(KeyEvent.KEY_PRESSED, event -> manager.movePacman(event));

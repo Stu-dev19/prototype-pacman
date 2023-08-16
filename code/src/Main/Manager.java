@@ -5,7 +5,7 @@ package Main;
 import Boarder.Cookie;
 import Boarder.Maze;
 import Boarder.Obstacle;
-import Enemies.Ghost;
+import Enemies.Ghost1;
 import Boarder.Score;
 import Player.Pacman;
 import javafx.animation.AnimationTimer;
@@ -24,7 +24,7 @@ public class Manager {
     private Pacman pacman;
     private Group root;
     private Set<Cookie> cookieSet;
-    private Set<Ghost> ghosts;
+    private Set<Ghost1> ghosts;
     private AnimationTimer leftPacmanAnimation;
     private AnimationTimer rightPacmanAnimation;
     private AnimationTimer upPacmanAnimation;
@@ -56,7 +56,7 @@ public class Manager {
         this.rightPacmanAnimation.stop();
         this.upPacmanAnimation.stop();
         this.downPacmanAnimation.stop();
-        for (Ghost ghost : ghosts) {
+        for (Ghost1 ghost : ghosts) {
             ghost.getAnimation().stop();
         }
         this.pacman.setCenterX(2.5 * Obstacle.THICKNESS);
@@ -73,7 +73,7 @@ public class Manager {
     private void gameOver() {
         this.gameEnded = true;
         root.getChildren().remove(pacman);
-        for (Ghost ghost : ghosts) {
+        for (Ghost1 ghost : ghosts) {
             root.getChildren().remove(ghost);
         }
         javafx.scene.text.Text endGame = new javafx.scene.text.Text("Game Over, press ESC to restart");
@@ -209,14 +209,14 @@ public class Manager {
     }
 
     public void generateGhosts() {
-        this.ghosts.add(new Ghost(18.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.DEEPPINK, maze, this));
-        this.ghosts.add(new Ghost(22.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.GREENYELLOW, maze, this));
-        this.ghosts.add(new Ghost(28.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.BLACK, maze, this));
-        this.ghosts.add(new Ghost(28.5 * Obstacle.THICKNESS, 9.5 * Obstacle.THICKNESS, Color.SPRINGGREEN, maze, this));
+        this.ghosts.add(new Ghost1(18.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.DEEPPINK, maze, this));
+        this.ghosts.add(new Ghost1(22.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.GREENYELLOW, maze, this));
+        this.ghosts.add(new Ghost1(28.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.BLACK, maze, this));
+        this.ghosts.add(new Ghost1(28.5 * Obstacle.THICKNESS, 9.5 * Obstacle.THICKNESS, Color.SPRINGGREEN, maze, this));
     }
 
     public void movePacman(KeyEvent event) {
-        for (Ghost ghost : this.ghosts) {
+        for (Ghost1 ghost : this.ghosts) {
             ghost.run();
         }
         switch(event.getCode()) {
@@ -355,7 +355,7 @@ public class Manager {
         double pacmanRightEdge = pacmanCenterX + pacman.getRadius();
         double pacmanTopEdge = pacmanCenterY - pacman.getRadius();
         double pacmanBottomEdge = pacmanCenterY + pacman.getRadius();
-        for (Ghost ghost : ghosts) {
+        for (Ghost1 ghost : ghosts) {
             double ghostLeftEdge = ghost.getX();
             double ghostRightEdge = ghost.getX() + ghost.getWidth();
             double ghostTopEdge = ghost.getY();

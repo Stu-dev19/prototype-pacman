@@ -15,7 +15,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import java.awt.*;
+import javafx.scene.text.Text;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -77,8 +77,12 @@ public class Manager {
         this.pacman.setCenterY(2.5 * Obstacle.THICKNESS);
         lifes--;
         score -= 10;
-        this.scoreBoard.lifes.setText("Lifes: " + this.lifes);
-        this.scoreBoard.score.setText("Score: " + this.score);
+        this.scoreBoard.setM_life(new Text(Obstacle.THICKNESS * 20,
+                Obstacle.THICKNESS * 28,
+                "Life's: " + this.lifes)); // changed from string object; added quotation
+        this.scoreBoard.setM_score(new Text(Obstacle.THICKNESS * 4,
+                Obstacle.THICKNESS * 28,
+                "Score: " + this.score)); // changed from string object
         if (lifes == 0) {
             this.gameOver();
         }
@@ -87,7 +91,7 @@ public class Manager {
     private void gameOver() {
         this.gameEnded = true;
         root.getChildren().remove(pacman);
-        for (Ghost1 ghost : ghosts) {
+        for (Ghost ghost : ghosts) {
             root.getChildren().remove(ghost);
         }
         javafx.scene.text.Text endGame = new javafx.scene.text.Text("Game Over, press ESC to restart");
@@ -95,8 +99,8 @@ public class Manager {
         endGame.setY(Obstacle.THICKNESS * 28);
         endGame.setFont(Font.font("Arial", 40));
         endGame.setFill(Color.ROYALBLUE);
-        root.getChildren().remove(this.scoreBoard.score);
-        root.getChildren().remove(this.scoreBoard.lifes);
+        root.getChildren().remove(this.scoreBoard.getM_score());
+        root.getChildren().remove(this.scoreBoard.getM_life());
         root.getChildren().add(endGame);
     }
 
@@ -375,7 +379,9 @@ public class Manager {
                     cookie.hide();
                 }
             }
-            this.scoreBoard.score.setText("Score: " + this.score);
+            this.scoreBoard.setM_score(new Text(Obstacle.THICKNESS * 4,
+                    Obstacle.THICKNESS * 28,
+                    "Score: " + this.score));
             if (this.cookiesEaten == this.cookieSet.size()) {
                 this.gameOver();
             }
@@ -389,7 +395,7 @@ public class Manager {
         double pacmanRightEdge = pacmanCenterX + pacman.getRadius();
         double pacmanTopEdge = pacmanCenterY - pacman.getRadius();
         double pacmanBottomEdge = pacmanCenterY + pacman.getRadius();
-        for (Ghost1 ghost : ghosts) {
+        for (Ghost ghost : ghosts) {
             double ghostLeftEdge = ghost.getX();
             double ghostRightEdge = ghost.getX() + ghost.getWidth();
             double ghostTopEdge = ghost.getY();

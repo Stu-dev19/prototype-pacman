@@ -30,8 +30,8 @@ public class Score {
         getM_life().setFill(Color.MAROON);
         getM_life().setFont(Font.font("Arial", 30));
 
-        root.getChildren().add(score);
-        root.getChildren().add(lifes); // problem with manager class
+        root.getChildren().add(m_score);
+        root.getChildren().add(m_life); // problem with manager class
     }
 
     // Displayed Accessor methods for m_score and m_life

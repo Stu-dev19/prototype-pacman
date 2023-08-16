@@ -4,11 +4,11 @@ package Enemies;
 
 import Boarder.Maze;
 import Main.Manager;
-import java.awt.*;
 import java.util.Random;
 
 // To be installed with JavaFx
 import javafx.animation.AnimationTimer;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 

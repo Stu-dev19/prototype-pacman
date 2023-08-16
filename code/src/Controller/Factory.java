@@ -3,12 +3,13 @@ package Controller;
 import Boarder.Cookie;
 import Boarder.Maze;
 import Enemies.Ghost;
-import java.awt.*;
+import javafx.scene.Group;
+import javafx.scene.paint.Color;
 
 public class Factory {
 
         private Maze m_maze;
-        private Group m_root; // to be later imported in javafx
+        private Group m_root;
 
         public Factory(Maze maze, Group root){
             this.m_maze = maze;

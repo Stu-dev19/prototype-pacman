@@ -1,7 +1,5 @@
 package Boarder;
 
-
-
 import javafx.scene.Group;
 
 import java.util.HashSet;
@@ -11,7 +9,8 @@ public class Maze {
 
     public Set<Obstacle> obstacles;
 
-    Maze() {
+    // Constructor changed to be public for Manager class
+    public Maze() {
         obstacles = new HashSet<>();
     }
 

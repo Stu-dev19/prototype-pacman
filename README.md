@@ -30,7 +30,6 @@ internet to play the game online (e.g. https://www.google.com/logos/2010/pacman1
 
 8. Add JavaFX visulisations to code and add more features for the game.
 
+# Status
 
-## Status
-
-Staus=*Debugging*
+Staus=*JUNIT Testing*

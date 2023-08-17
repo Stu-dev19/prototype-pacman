@@ -1,9 +1,9 @@
-package Enemies;
+package enemies;
 
 
 
-import Boarder.Maze;
-import Main.Manager;
+import boarder.Maze;
+import main.Manager;
 import java.util.Random;
 
 // To be installed with JavaFx

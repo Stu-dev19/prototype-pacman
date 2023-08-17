@@ -1,8 +1,6 @@
-package Boarder;
+package boarder;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
-import java.awt.*; // separate library from javafx
 
 // More javafx imports for Color and Rectangle
 

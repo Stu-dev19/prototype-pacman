@@ -1,8 +1,8 @@
-package Controller;
+package controller;
 
-import Boarder.Cookie;
-import Boarder.Maze;
-import Enemies.Ghost;
+import boarder.Cookie;
+import boarder.Maze;
+import enemies.Ghost;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 

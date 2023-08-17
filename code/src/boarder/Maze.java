@@ -1,4 +1,4 @@
-package Boarder;
+package boarder;
 
 import javafx.scene.Group;
 

@@ -1,11 +1,10 @@
-package Player;
+package player;
 
 
 // Javafx imports need to be handled with maven/JDK build
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import java.awt.*; // for the color import
 
 public class Pacman extends Circle { // Circle class not defined or module not imported; part of javafx
 

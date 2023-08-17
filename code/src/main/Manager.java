@@ -1,14 +1,14 @@
-package Main;
+package main;
 
 
 
-import Boarder.Cookie;
-import Boarder.Maze;
-import Boarder.Obstacle;
-import Controller.Factory;
-import Enemies.Ghost;
-import Boarder.Score;
-import Player.Pacman;
+import boarder.Cookie;
+import boarder.Maze;
+import boarder.Obstacle;
+import controller.Factory;
+import enemies.Ghost;
+import boarder.Score;
+import player.Pacman;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.input.KeyCode;

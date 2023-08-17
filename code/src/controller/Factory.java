@@ -1,6 +1,6 @@
 package controller;
 
-import boarder.Cookie;
+import boarder.Pellet;
 import boarder.Maze;
 import enemies.Ghost;
 import javafx.scene.Group;
@@ -20,7 +20,7 @@ public class Factory {
             return new Ghost(x, y, color, this.m_maze, this.m_root);
         }
 
-        public Cookie createCookie(double x, double y){
-            return new Cookie(x, y);
+        public Pellet createCookie(double x, double y){
+            return new Pellet(x, y);
         }
 }

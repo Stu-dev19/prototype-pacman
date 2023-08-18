@@ -17,7 +17,7 @@ public class Score {
     private Text m_score; // class variables start with m_: BCC Rule 4
     private Text m_lives; // member class variables are private BCC Rule 7
     private static final String m_scoreValue = "Score: 0";
-    private static final String m_liveValue = "Lives: 0";
+    private static final String m_liveValue = "Lives: 3";
     private static final String m_font = "Arial";
     // Symbolic constants converted by BCC Rule 10
     private static final int SCORE_HORIZONTAL_THICKNESS = 4;

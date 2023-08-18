@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 // Class Obstacle is used to create 2D rectangles for the maze
+// Maybe implement a factory for obstacles for ease of use?
 public class Obstacle extends Rectangle {
 
     // Changed thickness to symbolic constant BCC: Rule 10
@@ -37,8 +38,17 @@ public class Obstacle extends Rectangle {
         this.setStrokeWidth(3);
     }
 
-    // Public Getter and Setter methods for private member variables
+    // Function for when an object touches the obstacle
+    // Moved from class Maze as it seems more practical and reduce length of Maze
+    public boolean isTouching(double x, double y, double padding, Obstacle obstacle){
+        // Check conditions for the objects x and y coordinates
+        return x >= obstacle.getX() - padding &&
+                x <= obstacle.getX() + padding + obstacle.getWidth() &&
+                y >= obstacle.getY() - padding &&
+                y <= obstacle.getY() + padding + obstacle.getHeight();
+    }
 
+    // Public Getter and Setter methods for private member variables
     public static double getMaxRectangleThickness() {
         return MAX_RECTANGLE_THICKNESS;
     }

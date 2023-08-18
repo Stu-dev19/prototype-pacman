@@ -71,7 +71,7 @@ public class Manager {
         this.upPacmanAnimation.stop();
         this.downPacmanAnimation.stop();
         for (Ghost ghost : ghosts) {
-            ghost.getAnimation().stop();
+            ghost.GetAnimation().stop();
         }
         this.pacman.setCenterX(2.5 * Obstacle.getMaxRectangleThickness());
         this.pacman.setCenterY(2.5 * Obstacle.getMaxRectangleThickness());

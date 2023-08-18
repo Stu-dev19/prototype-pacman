@@ -65,7 +65,7 @@ public class Ghost extends Rectangle implements Runnable { // Rectangle class no
         this.setX(x);
         this.setY(y);
         this.setM_Maze(maze);
-        this.setM_Manager(Manager.getInstance(root)); // Singleton pass
+        this.setM_Manager(Manager.GetInstance(root)); // Singleton pass
         this.setHeight(50);
         this.setWidth(50);
         this.setFill(color);
@@ -189,28 +189,32 @@ public class Ghost extends Rectangle implements Runnable { // Rectangle class no
                 int walkAtLeast = 4;
                 switch (getM_Direction()) {
                     case "left":
-                        determineMovement("left", "down", leftEdge, topEdge, rightEdge, bottomEdge, padding);
+                        determineMovement("left", "down",
+                                leftEdge, topEdge, rightEdge, bottomEdge, padding);
                         if (getM_TimesWalked() > walkAtLeast) {
                             determinePath(getRandomDirection("left", "right"));
                             setM_TimesWalked(0);
                         }
                         break;
                     case "right":
-                        determineMovement("right", "up", leftEdge, topEdge, rightEdge, bottomEdge, padding);
+                        determineMovement("right", "up",
+                                leftEdge, topEdge, rightEdge, bottomEdge, padding);
                         if (getM_TimesWalked() > walkAtLeast) {
                             determinePath(getRandomDirection("left", "right"));
                              setM_TimesWalked(0);
                         }
                         break;
                     case "up":
-                        determineMovement("up", "left", leftEdge, topEdge, rightEdge, bottomEdge, padding);
+                        determineMovement("up", "left",
+                                leftEdge, topEdge, rightEdge, bottomEdge, padding);
                         if (getM_TimesWalked() > walkAtLeast) {
                             determinePath(getRandomDirection("up", "down"));
                             setM_TimesWalked(0);
                         }
                         break;
                     case "down":
-                        determineMovement("down", "right", leftEdge, topEdge, rightEdge, bottomEdge, padding);
+                        determineMovement("down", "right",
+                                leftEdge, topEdge, rightEdge, bottomEdge, padding);
                         if (getM_TimesWalked() > walkAtLeast) {
                             determinePath(getRandomDirection("up", "down"));
                             setM_TimesWalked(0);

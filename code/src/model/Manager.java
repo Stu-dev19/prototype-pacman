@@ -1,12 +1,8 @@
-package main;
+package model;
 // import java classes
-import tilemanager.Pellet;
-import tilemanager.Maze;
-import tilemanager.Tiles;
 import controller.Factory;
-import enemies.Ghost;
-import tilemanager.Score;
-import player.Pacman;
+import view.enemies.Ghost;
+import view.player.Pacman;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.input.KeyCode;
@@ -34,7 +30,7 @@ public class Manager {
     private final AnimationTimer upPacmanAnimation;
     private final AnimationTimer downPacmanAnimation;
     private final Maze maze;
-    private int lifes;
+    private int lives;
     private int score;
     private Score scoreBoard;
     private boolean gameEnded;
@@ -53,14 +49,10 @@ public class Manager {
         this.rightPacmanAnimation = this.createAnimation("right");
         this.upPacmanAnimation = this.createAnimation("up");
         this.downPacmanAnimation = this.createAnimation("down");
-        this.lifes = 3;
+        this.lives = 3;
         this.score = 0;
         this.cookiesEaten = 0;
         this.factory = new Factory(this.maze, root); // infer new factory
-    }
-
-    public Group GetRoot(){
-        return this.root;
     }
 
     // Singleton for Manager object
@@ -81,15 +73,15 @@ public class Manager {
         }
         this.pacman.setCenterX(2.5 * Tiles.getMaxRectangleThickness());
         this.pacman.setCenterY(2.5 * Tiles.getMaxRectangleThickness());
-        lifes--;
+        lives--;
         score -= 10;
         this.scoreBoard.setM_lives(new Text(Tiles.getMaxRectangleThickness() * 20,
                 Tiles.getMaxRectangleThickness() * 28,
-                "Life's: " + this.lifes)); // changed from string object; added quotation
+                "Life's: " + this.lives)); // changed from string object; added quotation
         this.scoreBoard.setM_score(new Text(Tiles.getMaxRectangleThickness() * 4,
                 Tiles.getMaxRectangleThickness() * 28,
                 "Score: " + this.score)); // changed from string object
-        if (lifes == 0) {
+        if (lives == 0) {
             this.gameOver();
         }
     }
@@ -118,7 +110,7 @@ public class Manager {
             this.DrawMaze();
             this.pacman.setCenterX(2.5 * Tiles.getMaxRectangleThickness());
             this.pacman.setCenterY(2.5 * Tiles.getMaxRectangleThickness());
-            this.lifes = 3;
+            this.lives = 3;
             this.score = 0;
             this.cookiesEaten = 0;
             gameEnded = false;

@@ -1,8 +1,8 @@
 package controller;
 
-import tilemanager.Pellet;
-import tilemanager.Maze;
-import enemies.Ghost;
+import model.Pellet;
+import model.Maze;
+import view.enemies.Ghost;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 

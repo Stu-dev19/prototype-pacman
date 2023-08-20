@@ -1,7 +1,7 @@
-package enemies;
+package view.enemies;
 // Import useful Java imports
-import tilemanager.Maze;
-import main.Manager;
+import model.Maze;
+import model.Manager;
 import java.util.Random;
 
 // To be installed with JavaFx

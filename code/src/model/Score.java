@@ -1,4 +1,4 @@
-package tilemanager;
+package model;
 
 // JavaFx and java imports
 import javafx.scene.Group;

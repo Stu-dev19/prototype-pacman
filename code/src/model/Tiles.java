@@ -1,4 +1,4 @@
-package tilemanager;
+package model;
 
 // Useful JavaFx and java imports
 import javafx.scene.paint.Color;

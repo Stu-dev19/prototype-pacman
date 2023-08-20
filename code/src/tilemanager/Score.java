@@ -1,4 +1,4 @@
-package boarder;
+package tilemanager;
 
 // JavaFx and java imports
 import javafx.scene.Group;
@@ -30,11 +30,11 @@ public class Score {
     // Public methods should be named with a capital letter BCC Rule 8
     // Constructor used to set the score of the start of the game to default
     public Score(Group root) {
-        this.setM_score(new Text(Obstacle.getMaxRectangleThickness() * SCORE_HORIZONTAL_THICKNESS,
-                Obstacle.getMaxRectangleThickness() * SCORE_VERTICAL_THICKNESS,
+        this.setM_score(new Text(Tiles.getMaxRectangleThickness() * SCORE_HORIZONTAL_THICKNESS,
+                Tiles.getMaxRectangleThickness() * SCORE_VERTICAL_THICKNESS,
                 m_scoreValue));
-        this.setM_lives(new Text(Obstacle.getMaxRectangleThickness() * LIVES_HORIZONTAL_THICKNESS,
-                Obstacle.getMaxRectangleThickness() * LIVES_VERTICAL_THICKNESS,
+        this.setM_lives(new Text(Tiles.getMaxRectangleThickness() * LIVES_HORIZONTAL_THICKNESS,
+                Tiles.getMaxRectangleThickness() * LIVES_VERTICAL_THICKNESS,
                 m_liveValue)); // BCC Rule 3; changed spelling of lifes to lives
 
         // Change the score text's color and font

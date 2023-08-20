@@ -1,6 +1,6 @@
 package enemies;
 // Import useful Java imports
-import boarder.Maze;
+import tilemanager.Maze;
 import main.Manager;
 import java.util.Random;
 

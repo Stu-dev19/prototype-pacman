@@ -1,4 +1,4 @@
-package boarder;
+package tilemanager;
 
 // Useful JavaFx and java imports
 import javafx.scene.paint.Color;
@@ -6,7 +6,7 @@ import javafx.scene.shape.Rectangle;
 
 // Class Obstacle is used to create 2D rectangles for the maze
 // Maybe implement a factory for obstacles for ease of use?
-public class Obstacle extends Rectangle {
+public class Tiles extends Rectangle {
 
     // Changed thickness to symbolic constant BCC: Rule 10
     // Constant variable needs changing
@@ -14,8 +14,7 @@ public class Obstacle extends Rectangle {
     private double x_cor;
     private double y_cor;
 
-
-    public Obstacle(double x, double y, String orientation, double length) {
+    public Tiles(double x, double y, String orientation, double length) {
         // Set x and y coordinates using inherited constructor of Rectangle
         this.setX(x);
         this.setY(y);
@@ -40,12 +39,12 @@ public class Obstacle extends Rectangle {
 
     // Function for when an object touches the obstacle
     // Moved from class Maze as it seems more practical and reduce length of Maze
-    public boolean isTouching(double x, double y, double padding, Obstacle obstacle){
+    public boolean isTouching(double x, double y, double padding, Tiles tiles){
         // Check conditions for the objects x and y coordinates
-        return x >= obstacle.getX() - padding &&
-                x <= obstacle.getX() + padding + obstacle.getWidth() &&
-                y >= obstacle.getY() - padding &&
-                y <= obstacle.getY() + padding + obstacle.getHeight();
+        return x >= tiles.getX() - padding &&
+                x <= tiles.getX() + padding + tiles.getWidth() &&
+                y >= tiles.getY() - padding &&
+                y <= tiles.getY() + padding + tiles.getHeight();
     }
 
     // Public Getter and Setter methods for private member variables

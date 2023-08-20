@@ -1,11 +1,11 @@
 package main;
 // import java classes
-import boarder.Pellet;
-import boarder.Maze;
-import boarder.Obstacle;
+import tilemanager.Pellet;
+import tilemanager.Maze;
+import tilemanager.Tiles;
 import controller.Factory;
 import enemies.Ghost;
-import boarder.Score;
+import tilemanager.Score;
 import player.Pacman;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
@@ -45,8 +45,8 @@ public class Manager {
     private Manager(Group root) { // changed constructor to private
         this.root = root;
         this.maze = new Maze();
-        this.pacman = new Pacman(2.5 * Obstacle.getMaxRectangleThickness(),
-                2.5 * Obstacle.getMaxRectangleThickness());
+        this.pacman = new Pacman(2.5 * Tiles.getMaxRectangleThickness(),
+                2.5 * Tiles.getMaxRectangleThickness());
         this.cookieSet = new HashSet<>();
         this.ghosts = new HashSet<>();
         this.leftPacmanAnimation = this.createAnimation("left");
@@ -75,15 +75,15 @@ public class Manager {
         for (Ghost ghost : ghosts) {
             ghost.GetAnimation().stop();
         }
-        this.pacman.setCenterX(2.5 * Obstacle.getMaxRectangleThickness());
-        this.pacman.setCenterY(2.5 * Obstacle.getMaxRectangleThickness());
+        this.pacman.setCenterX(2.5 * Tiles.getMaxRectangleThickness());
+        this.pacman.setCenterY(2.5 * Tiles.getMaxRectangleThickness());
         lifes--;
         score -= 10;
-        this.scoreBoard.setM_lives(new Text(Obstacle.getMaxRectangleThickness() * 20,
-                Obstacle.getMaxRectangleThickness() * 28,
+        this.scoreBoard.setM_lives(new Text(Tiles.getMaxRectangleThickness() * 20,
+                Tiles.getMaxRectangleThickness() * 28,
                 "Life's: " + this.lifes)); // changed from string object; added quotation
-        this.scoreBoard.setM_score(new Text(Obstacle.getMaxRectangleThickness() * 4,
-                Obstacle.getMaxRectangleThickness() * 28,
+        this.scoreBoard.setM_score(new Text(Tiles.getMaxRectangleThickness() * 4,
+                Tiles.getMaxRectangleThickness() * 28,
                 "Score: " + this.score)); // changed from string object
         if (lifes == 0) {
             this.gameOver();
@@ -97,8 +97,8 @@ public class Manager {
             root.getChildren().remove(ghost);
         }
         Text endGame = new Text("Game Over!, press ESC to restart"); // removed whole javafx. palava
-        endGame.setX(Obstacle.getMaxRectangleThickness() * 3);
-        endGame.setY(Obstacle.getMaxRectangleThickness() * 28);
+        endGame.setX(Tiles.getMaxRectangleThickness() * 3);
+        endGame.setY(Tiles.getMaxRectangleThickness() * 28);
         endGame.setFont(Font.font("Arial", 40));
         endGame.setFill(Color.ROYALBLUE);
         root.getChildren().remove(this.scoreBoard.getM_score());
@@ -112,8 +112,8 @@ public class Manager {
             this.cookieSet.clear();
             this.ghosts.clear();
             this.DrawMaze();
-            this.pacman.setCenterX(2.5 * Obstacle.getMaxRectangleThickness());
-            this.pacman.setCenterY(2.5 * Obstacle.getMaxRectangleThickness());
+            this.pacman.setCenterX(2.5 * Tiles.getMaxRectangleThickness());
+            this.pacman.setCenterY(2.5 * Tiles.getMaxRectangleThickness());
             this.lifes = 3;
             this.score = 0;
             this.cookiesEaten = 0;
@@ -127,8 +127,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2*i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        2.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        2.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -138,8 +138,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2*i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        4.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        4.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -148,8 +148,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2*i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        6.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        6.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -159,8 +159,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2 * i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        8.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        8.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -169,8 +169,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2*i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        10.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        10.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -179,8 +179,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2*i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        12.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        12.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -189,8 +189,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2 * i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        14.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        14.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -200,8 +200,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2 * i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        16.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        16.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -210,8 +210,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2 * i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        18.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        18.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -221,8 +221,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2*i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        20.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        20.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -231,8 +231,8 @@ public class Manager {
         for (int i = 0; i < 23; i++) {
             if (!Arrays.asList(skip).contains(i)) {
                 Pellet cookie = this.factory.createCookie(((2 * i) + 2.5)
-                                * Obstacle.getMaxRectangleThickness(),
-                        22.5 * Obstacle.getMaxRectangleThickness());
+                                * Tiles.getMaxRectangleThickness(),
+                        22.5 * Tiles.getMaxRectangleThickness());
                 this.cookieSet.add(cookie);
                 root.getChildren().add(cookie);
             }
@@ -246,20 +246,20 @@ public class Manager {
     // Create for loop for ghost and cookies with an array for the colors and x variables
     public void GenerateGhosts() { // Changed colors for the ghosts and added factory methods
         this.ghosts.add(this.factory.createGhost(18.5 *
-                        Obstacle.getMaxRectangleThickness(),
-                12.5 * Obstacle.getMaxRectangleThickness(),
+                        Tiles.getMaxRectangleThickness(),
+                12.5 * Tiles.getMaxRectangleThickness(),
                 Color.PINK)); // From singleton method added root to parameters
         this.ghosts.add(this.factory.createGhost(22.5 *
-                        Obstacle.getMaxRectangleThickness(),
-                12.5 * Obstacle.getMaxRectangleThickness(),
+                        Tiles.getMaxRectangleThickness(),
+                12.5 * Tiles.getMaxRectangleThickness(),
                 Color.YELLOW));
         this.ghosts.add(this.factory.createGhost(28.5 *
-                        Obstacle.getMaxRectangleThickness(),
-                12.5 * Obstacle.getMaxRectangleThickness(),
+                        Tiles.getMaxRectangleThickness(),
+                12.5 * Tiles.getMaxRectangleThickness(),
                 Color.BLACK));
         this.ghosts.add(this.factory.createGhost(28.5 *
-                        Obstacle.getMaxRectangleThickness(),
-                9.5 * Obstacle.getMaxRectangleThickness(),
+                        Tiles.getMaxRectangleThickness(),
+                9.5 * Tiles.getMaxRectangleThickness(),
                 Color.GREEN));
     }
 
@@ -394,8 +394,8 @@ public class Manager {
                     cookie.hide();
                 }
             }
-            this.scoreBoard.setM_score(new Text(Obstacle.getMaxRectangleThickness() * 4,
-                    Obstacle.getMaxRectangleThickness() * 28,
+            this.scoreBoard.setM_score(new Text(Tiles.getMaxRectangleThickness() * 4,
+                    Tiles.getMaxRectangleThickness() * 28,
                     "Score: " + this.score));
             if (this.cookiesEaten == this.cookieSet.size()) {
                 this.gameOver();

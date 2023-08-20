@@ -1,7 +1,7 @@
 package controller;
 
-import boarder.Pellet;
-import boarder.Maze;
+import tilemanager.Pellet;
+import tilemanager.Maze;
 import enemies.Ghost;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;

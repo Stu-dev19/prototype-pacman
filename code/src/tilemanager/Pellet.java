@@ -1,4 +1,4 @@
-package boarder;
+package tilemanager;
 
 // JavaFx and other java imports
 import javafx.scene.paint.Color;

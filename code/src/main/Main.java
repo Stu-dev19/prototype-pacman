@@ -16,13 +16,13 @@ public class Main extends Application {
         Group root = new Group();
         Scene sc = new Scene( root );
         st.setScene( sc );
-        Canvas canvas = new Canvas( 1225, 600 );
+        Canvas canvas = new Canvas( 600, 600 );  // 1225 and 600
         root.getChildren().add( canvas );
         Manager manager = Manager.GetInstance(root);
         manager.DrawMaze();
-        sc.addEventHandler(KeyEvent.KEY_PRESSED, event -> manager.MovePacman(event));
-        sc.addEventHandler(KeyEvent.KEY_RELEASED, event -> manager.StopPacman(event));
-        sc.addEventHandler(KeyEvent.KEY_PRESSED, event -> manager.restartGame(event));
+        sc.addEventHandler(KeyEvent.KEY_PRESSED, manager::MovePacman);
+        sc.addEventHandler(KeyEvent.KEY_RELEASED, manager::StopPacman);
+        sc.addEventHandler(KeyEvent.KEY_PRESSED, manager::restartGame);
         st.show();
     }
 

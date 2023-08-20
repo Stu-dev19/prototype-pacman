@@ -59,6 +59,10 @@ public class Manager {
         this.factory = new Factory(this.maze, root); // infer new factory
     }
 
+    public Group GetRoot(){
+        return this.root;
+    }
+
     // Singleton for Manager object
     public static Manager GetInstance(Group root){
         if(instance == null){

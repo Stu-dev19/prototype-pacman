@@ -13,19 +13,6 @@ public class Pellet extends Circle {
     private double x_cor;
     private double y_cor;
 
-    // Constructor class takes in two parameters x and y for the pellets
-    // Creates a 2D circle in a brownish color
-    public Pellet(double x, double y) {
-        this.setX_cor(x);
-        this.setY_cor(y);
-
-        this.setValue(5); // value set at 5; changed to use a setter method for encapsulation
-        this.setCenterX(x);
-        this.setCenterY(y);
-        this.setRadius(12.5);
-        this.setFill(Color.SADDLEBROWN);
-    }
-
     // Public Getter and Setter methods to support encapsulation ***
 
     // Get the value of the value?
@@ -55,14 +42,22 @@ public class Pellet extends Circle {
     }
     // End of Getter and Setter methods ****
 
+    // Constructor class takes in two parameters x and y for the pellets
+    // Creates a 2D circle in a brownish color
+    public Pellet(double x, double y) {
+        this.setX_cor(x);
+        this.setY_cor(y);
+
+        this.setValue(5); // value set at 5; changed to use a setter method for encapsulation
+        this.setCenterX(x);
+        this.setCenterY(y);
+        this.setRadius(12.5);
+        this.setFill(Color.SADDLEBROWN);
+    }
+
     // Function that sets the visibility of Pacman to invisible
     // Maybe we don't need these functions as they seem unneseecary?
     public void hide() {
         this.setVisible(false);
-    }
-
-    // Function that sets the visibility of Pacman to visible
-    public void show() {
-        this.setVisible(true);
     }
 }

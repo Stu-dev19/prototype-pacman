@@ -1,6 +1,7 @@
 package model;
 // import java classes
 import controller.Factory;
+import javafx.scene.paint.Paint;
 import view.enemies.Ghost;
 import view.player.Pacman;
 import javafx.animation.AnimationTimer;
@@ -11,9 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 // Class manager manages the whole system
 // Classes need to be delegated to other classes
@@ -37,6 +36,11 @@ public class Manager {
     private int cookiesEaten;
     private static Manager instance;
     private final Factory factory;
+    private HighScore highScore;
+    private String playerName;
+    boolean invincibleMode = true; // set the invincibility to false
+    boolean keyChange = false; // set the i key change to false
+    private Timer timer; // time for 5 second invincibility mode
 
     private Manager(Group root) { // changed constructor to private
         this.root = root;
@@ -71,19 +75,64 @@ public class Manager {
         for (Ghost ghost : ghosts) {
             ghost.GetAnimation().stop();
         }
-        this.pacman.setCenterX(2.5 * Tiles.getMaxRectangleThickness());
+        this.pacman.setCenterX(2.5 * Tiles.getMaxRectangleThickness()); // return pacman to home
         this.pacman.setCenterY(2.5 * Tiles.getMaxRectangleThickness());
-        lives--;
-        score -= 10;
+        lives -= 1; // reduce lives
+        score -= 10; // reduce score
         this.scoreBoard.setM_lives(new Text(Tiles.getMaxRectangleThickness() * 20,
                 Tiles.getMaxRectangleThickness() * 28,
-                "Life's: " + this.lives)); // changed from string object; added quotation
+                "Lives: " + this.lives), root); // changed from string object; added quotation
         this.scoreBoard.setM_score(new Text(Tiles.getMaxRectangleThickness() * 4,
                 Tiles.getMaxRectangleThickness() * 28,
-                "Score: " + this.score)); // changed from string object
+                "Score: " + this.score), root); // changed from string object
         if (lives == 0) {
             this.gameOver();
         }
+    }
+
+    // Used only once per game
+    // During game play when you press the 'I' key
+    // Pacman will change color for 10s
+    // The ghosts will change color for 10s
+    // When Pacman collides with any ghost they will return to their start position
+    public void InvincibleMode(KeyEvent event) {
+        // When invincible mode is true
+        if (event.getCode() == KeyCode.I && this.invincibleMode){ // When I pressed
+            // Change the color of pacman
+            this.pacman.InvinciblePacman();
+            // Change the color of the ghosts
+            for (Ghost ghost : ghosts) {
+                ghost.ChangeGhostColor(Color.RED);
+            }
+            // Set invincible mode to true
+            this.invincibleMode = true;
+            this.keyChange = true;
+            // Start the countdown timer
+            this.timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    // After the timer revert pacman
+                    // and the ghosts to original colors
+                    pacman.setFill(Color.YELLOW);
+                    for (Ghost ghost : ghosts) {
+                        ghost.ChangeGhostColor(ghost.GetOriginalColor());
+                    }
+                    // set invincibility to false
+                    invincibleMode = false;
+                }
+            }, 5000); // 5 seconds
+        }
+    }
+
+    public void DisplayPlayerName(String playerName){
+        Text player = new Text("PLAYER: " + playerName); // removed whole javafx. palava
+        this.playerName = playerName;
+        player.setX(Tiles.getMaxRectangleThickness() * 40);
+        player.setY(Tiles.getMaxRectangleThickness() * 30);
+        player.setFont(Font.font("Arial", 20));
+        player.setFill(Color.MEDIUMPURPLE);
+        root.getChildren().add(player);
     }
 
     private void gameOver() {
@@ -100,6 +149,9 @@ public class Manager {
         root.getChildren().remove(this.scoreBoard.getM_score());
         root.getChildren().remove(this.scoreBoard.getM_lives());
         root.getChildren().add(endGame);
+
+        // Show the high score board
+        highScore = new HighScore(this.playerName, this.score);
     }
 
     public void restartGame(KeyEvent event) {
@@ -114,6 +166,7 @@ public class Manager {
             this.score = 0;
             this.cookiesEaten = 0;
             gameEnded = false;
+            this.invincibleMode = true;
         }
     }
 
@@ -236,7 +289,7 @@ public class Manager {
         root.getChildren().add(this.pacman);
         this.GenerateGhosts();
         root.getChildren().addAll(this.ghosts);
-        this.scoreBoard = new Score(root);
+        this.scoreBoard = new Score(root); // call constructor of score
     }
 
     // Create for loop for ghost and cookies with an array for the colors and x variables
@@ -307,28 +360,28 @@ public class Manager {
                     if (!maze.isTouching(pacman.getCenterX() - pacman.getRadius(), pacman.getCenterY(), 15)) {
                         pacman.setCenterX(pacman.getCenterX() - step);
                         checkPelletCollision(pacman, "x");
-                        checkGhostCoalition();
+                        checkGhostCollision();
                     }
                     break;
                 case "right":
                     if (!maze.isTouching(pacman.getCenterX() + pacman.getRadius(), pacman.getCenterY(), 15)) {
                         pacman.setCenterX(pacman.getCenterX() + step);
                         checkPelletCollision(pacman, "x");
-                        checkGhostCoalition();
+                        checkGhostCollision();
                     }
                     break;
                 case "up":
                     if (!maze.isTouching(pacman.getCenterX(), pacman.getCenterY() - pacman.getRadius(), 15)) {
                         pacman.setCenterY(pacman.getCenterY() - step);
                         checkPelletCollision(pacman, "y");
-                        checkGhostCoalition();
+                        checkGhostCollision();
                     }
                     break;
                 case "down":
                    if (!maze.isTouching(pacman.getCenterX(), pacman.getCenterY() + pacman.getRadius(), 15)) {
                        pacman.setCenterY(pacman.getCenterY() + step);
                        checkPelletCollision(pacman, "y");
-                       checkGhostCoalition();
+                       checkGhostCollision();
                    }
                    break;
             }
@@ -392,14 +445,14 @@ public class Manager {
             }
             this.scoreBoard.setM_score(new Text(Tiles.getMaxRectangleThickness() * 4,
                     Tiles.getMaxRectangleThickness() * 28,
-                    "Score: " + this.score));
+                    "Score: " + this.score), root);
             if (this.cookiesEaten == this.cookieSet.size()) {
                 this.gameOver();
             }
         }
     }
 
-    public void checkGhostCoalition() {
+    public void checkGhostCollision() {
         double pacmanCenterY = pacman.getCenterY();
         double pacmanCenterX = pacman.getCenterX();
         double pacmanLeftEdge = pacmanCenterX - pacman.getRadius();
@@ -416,7 +469,23 @@ public class Manager {
                     (pacmanRightEdge >= ghostLeftEdge && pacmanRightEdge <= ghostRightEdge)) {
                 if ((pacmanTopEdge <= ghostBottomEdge && pacmanTopEdge >= ghostTopEdge) ||
                         (pacmanBottomEdge >= ghostTopEdge && pacmanBottomEdge <= ghostBottomEdge)) {
-                    removeLife();
+                    // When invincibility mode is on
+                    // Return the ghost that was touched back to its position
+                    if (this.invincibleMode && keyChange){
+                        // Save the ghost
+                        Ghost newGhost = ghost;
+                        // Remove the ghost from its position
+                        root.getChildren().remove(ghost);
+                        // Add it to the original position
+                        newGhost.setX(22.5 * Tiles.getMaxRectangleThickness());
+                        newGhost.setY(12.5 * Tiles.getMaxRectangleThickness());
+                        root.getChildren().add(newGhost);
+                        // Add 20 bonus points
+                        this.score += 20;
+                    }
+                    else{
+                        removeLife();
+                    }
                 }
             }
         }

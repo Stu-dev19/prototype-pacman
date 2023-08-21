@@ -31,11 +31,9 @@ public class Score {
     // Constructor used to set the score of the start of the game to default
     public Score(Group root) {
         this.setM_score(new Text(Tiles.getMaxRectangleThickness() * SCORE_HORIZONTAL_THICKNESS,
-                Tiles.getMaxRectangleThickness() * SCORE_VERTICAL_THICKNESS,
-                m_scoreValue));
+                Tiles.getMaxRectangleThickness() * SCORE_VERTICAL_THICKNESS, m_scoreValue), root);
         this.setM_lives(new Text(Tiles.getMaxRectangleThickness() * LIVES_HORIZONTAL_THICKNESS,
-                Tiles.getMaxRectangleThickness() * LIVES_VERTICAL_THICKNESS,
-                m_liveValue)); // BCC Rule 3; changed spelling of lifes to lives
+                Tiles.getMaxRectangleThickness() * LIVES_VERTICAL_THICKNESS, m_liveValue), root); // BCC Rule 3; changed spelling of lifes to lives
 
         // Change the score text's color and font
         getM_score().setFill(Color.MAGENTA);
@@ -44,10 +42,6 @@ public class Score {
         // Change the live text's color and font
         getM_lives().setFill(Color.MAROON);
         getM_lives().setFont(Font.font(m_font, MAX_FONT_SIZE));
-
-        // Add the following texts to the main screen
-        root.getChildren().add(m_score);
-        root.getChildren().add(m_lives);
     }
 
     // Displayed Accessor methods for m_score and m_life
@@ -60,12 +54,25 @@ public class Score {
         return m_lives;
     }
 
-    public void setM_score(Text m_score) {
-        this.m_score = m_score;
+    public void setM_score(Text newScore, Group root) {
+        // You need to remove the original score first
+        root.getChildren().remove(this.m_score);
+        this.m_score = newScore;
+
+        // Change the score text's color and font
+        getM_score().setFill(Color.MAGENTA);
+        getM_score().setFont(Font.font(m_font, MAX_FONT_SIZE));
+        root.getChildren().add(this.m_score);
     }
 
-    public void setM_lives(Text m_lives) {
+    public void setM_lives(Text m_lives, Group root) {
+        root.getChildren().remove(this.m_lives);
         this.m_lives = m_lives;
+
+        // Change the live text's color and font
+        getM_lives().setFill(Color.MAROON);
+        getM_lives().setFont(Font.font(m_font, MAX_FONT_SIZE));
+        root.getChildren().add(this.m_lives);
     }
 
     // End of Getter and Setter methods ***

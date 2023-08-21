@@ -19,6 +19,7 @@ public class Ghost extends Rectangle implements Runnable { // Rectangle class no
     private Maze m_Maze;
     private AnimationTimer m_Animation;
     private int m_TimesWalked;
+    private Color originalColor;
 
     // Getter and Setter accessor methods
     public String getM_Direction() {
@@ -57,6 +58,8 @@ public class Ghost extends Rectangle implements Runnable { // Rectangle class no
         return m_TimesWalked;
     }
 
+    public Color GetOriginalColor(){return originalColor;}
+
     public void setM_TimesWalked(int m_TimesWalked) {
         this.m_TimesWalked = m_TimesWalked;
     }
@@ -72,6 +75,7 @@ public class Ghost extends Rectangle implements Runnable { // Rectangle class no
         this.setM_TimesWalked(0);
         this.setM_Direction("down");
         this.CreateAnimation();
+        this.originalColor = color;
     }
 
     private String getRandomDirection(String exclude1, String exclude2) {
@@ -81,6 +85,10 @@ public class Ghost extends Rectangle implements Runnable { // Rectangle class no
             rnd = new Random().nextInt(directions.length);
         }
         return directions[rnd];
+    }
+
+    public void ChangeGhostColor(Color color){
+        this.setFill(color);
     }
 
     public AnimationTimer GetAnimation() {
@@ -179,7 +187,7 @@ public class Ghost extends Rectangle implements Runnable { // Rectangle class no
         {
             public void handle(long currentNanoTime)
             {
-                getM_Manager().checkGhostCoalition();
+                getM_Manager().checkGhostCollision();
                 double leftEdge = getX();
                 double topEdge = getY();
                 double rightEdge = getX() + getWidth();

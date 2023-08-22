@@ -22,8 +22,8 @@ import javafx.scene.paint.Color;
  */
 public class Factory {
 
-        private Maze m_maze;
-        private Group m_root;
+        private final Maze m_maze;
+        private final Group m_root;
 
         /**
          * Constructs a Factory instance with the maze and root group.

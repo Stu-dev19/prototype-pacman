@@ -21,8 +21,8 @@ public class Pacman extends Circle {
     // Member class variables for x and y coordinates of Pacman
 
 
-    private double x_cor;
-    private double y_cor;
+    private double m_XCor;
+    private double m_YCor;
 
     // Added Getter and Setter for x and y coordinates methods to improve encapsulation
 
@@ -30,32 +30,32 @@ public class Pacman extends Circle {
      * Gets the x-coordinate of Pacman.
      * @return x-coordinate of Pacman.
      */
-    public double getX_cor() {
-        return x_cor;
+    public double getM_XCor() {
+        return m_XCor;
     }
 
     /**
      * Sets the x-coordinate of Pacman.
-     * @param x_cor new x-coordinate of Pacman.
+     * @param m_XCor new x-coordinate of Pacman.
      */
-    public void setX_cor(double x_cor) {
-        this.x_cor = x_cor;
+    public void setM_XCor(double m_XCor) {
+        this.m_XCor = m_XCor;
     }
 
     /**
      * Gets the y-coordinate of Pacman.
      * @return y-coordinate of Pacman.
      */
-    public double getY_cor() {
-        return y_cor;
+    public double getM_YCor() {
+        return m_YCor;
     }
 
     /**
      * Sets the y-coordinate of Pacman.
-     * @param y_cor new y-coordinate of Pacman.
+     * @param m_YCor new y-coordinate of Pacman.
      */
-    public void setY_cor(double y_cor) {
-        this.y_cor = y_cor;
+    public void setM_YCor(double m_YCor) {
+        this.m_YCor = m_YCor;
     }
 
     // Constructor for Pacman
@@ -68,8 +68,8 @@ public class Pacman extends Circle {
      * @param y y-coordinate of Pacman's position.
      */
     public Pacman(double x, double y) {
-        this.setX_cor(x);
-        this.setY_cor(y);
+        this.setM_XCor(x);
+        this.setM_YCor(y);
 
         this.setCenterX(x);
         this.setCenterY(y);

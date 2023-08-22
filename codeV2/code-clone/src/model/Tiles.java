@@ -25,8 +25,8 @@ public class Tiles extends Rectangle {
     // Changed thickness to symbolic constant BCC: Rule 10
     // Constant variable needs changing
     private static double MAX_RECTANGLE_THICKNESS = 25;
-    private double x_cor;
-    private double y_cor;
+    private double m_XCor;
+    private double m_YCor;
 
     /**
      * Constructs Tiles object with specified position, orientation and length.
@@ -42,8 +42,8 @@ public class Tiles extends Rectangle {
         this.setY(y);
 
         // Set x and y coordinates from private member class variables
-        this.setX_cor(x);
-        this.setY_cor(y);
+        this.setM_XCor(x);
+        this.setM_YCor(y);
 
         // Creation of horizontal and vertical rectangles
         if (orientation.equals("horizontal")) {
@@ -99,31 +99,31 @@ public class Tiles extends Rectangle {
      * Gets the x-coordinate of the tile.
      * @return x-coordinate of the tile.
      */
-    public double getX_cor() {
-        return x_cor;
+    public double getM_XCor() {
+        return m_XCor;
     }
 
     /**
      * Sets the x-coordinate of the tile.
-     * @param x_cor new x-coordinate of the tile.
+     * @param m_XCor new x-coordinate of the tile.
      */
-    public void setX_cor(double x_cor) {
-        this.x_cor = x_cor;
+    public void setM_XCor(double m_XCor) {
+        this.m_XCor = m_XCor;
     }
 
     /**
      * Gets the y-coordinate of the tile.
      * @return y-coordinate of the tile.
      */
-    public double getY_cor() {
-        return y_cor;
+    public double getM_YCor() {
+        return m_YCor;
     }
 
     /**
      * Sets the y-coordinate of the tile.
-     * @param y_cor new y-coordinate of the tile.
+     * @param m_YCor new y-coordinate of the tile.
      */
-    public void setY_cor(double y_cor) {
-        this.y_cor = y_cor;
+    public void setM_YCor(double m_YCor) {
+        this.m_YCor = m_YCor;
     }
 }

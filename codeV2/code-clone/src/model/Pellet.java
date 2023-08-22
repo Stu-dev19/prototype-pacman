@@ -21,9 +21,9 @@ import javafx.scene.shape.Circle;
  */
 public class Pellet extends Circle {
 
-    private int value; // Cannot justify why value is used here
-    private double x_cor;
-    private double y_cor;
+    private int m_Value; // Cannot justify why value is used here
+    private double m_XCor;
+    private double m_YCor;
 
     // Public Getter and Setter methods to support encapsulation ***
 
@@ -32,50 +32,50 @@ public class Pellet extends Circle {
      * Gets the point value of the pellet.
      * @return point value of the pellet.
      */
-    public int getValue() {
-        return value;
+    public int getM_Value() {
+        return m_Value;
     }
 
     // Set the value of value
 
     /**
      * Sets the point value of the pellet.
-     * @param value point value to set for the pellet.
+     * @param m_Value point value to set for the pellet.
      */
-    public void setValue(int value){
-        this.value = value;
+    public void setM_Value(int m_Value){
+        this.m_Value = m_Value;
     }
 
     /**
      * Gets the x-coordinate of the pellet.
      * @return x-coordinate of the pellet.
      */
-    public double getX_cor() {
-        return x_cor;
+    public double getM_XCor() {
+        return m_XCor;
     }
 
     /**
      * Sets the x-coordinate of the pellet.
-     * @param x_cor x-coordinate to set for the pellet.
+     * @param m_XCor x-coordinate to set for the pellet.
      */
-    public void setX_cor(double x_cor) {
-        this.x_cor = x_cor;
+    public void setM_XCor(double m_XCor) {
+        this.m_XCor = m_XCor;
     }
 
     /**
      * Gets the y-coordinate of the pellet.
      * @return y-coordinate of the pellet.
      */
-    public double getY_cor() {
-        return y_cor;
+    public double getM_YCor() {
+        return m_YCor;
     }
 
     /**
      * Sets the y-coordinate of the pellet.
-     * @param y_cor y-coordinate to set for the pellet.
+     * @param m_YCor y-coordinate to set for the pellet.
      */
-    public void setY_cor(double y_cor) {
-        this.y_cor = y_cor;
+    public void setM_YCor(double m_YCor) {
+        this.m_YCor = m_YCor;
     }
     // End of Getter and Setter methods ****
 
@@ -89,10 +89,10 @@ public class Pellet extends Circle {
      */
     public Pellet(double x, double y) {
 
-        this.setX_cor(x);
-        this.setY_cor(y);
+        this.setM_XCor(x);
+        this.setM_YCor(y);
 
-        this.setValue(5); // value set at 5; changed to use a setter method for encapsulation
+        this.setM_Value(5); // value set at 5; changed to use a setter method for encapsulation
         this.setCenterX(x);
         this.setCenterY(y);
         this.setRadius(12.5);

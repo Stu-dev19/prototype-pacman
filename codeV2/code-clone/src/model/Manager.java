@@ -12,7 +12,6 @@ package model;
 
 // import java classes
 import controller.Factory;
-import javafx.scene.paint.Paint;
 import view.enemies.Ghost;
 import view.player.Pacman;
 import javafx.animation.AnimationTimer;
@@ -22,7 +21,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
+import view.sound.InGameMusic;
 import java.util.*;
 
 // Class manager manages the whole system
@@ -57,6 +56,7 @@ public class Manager {
     boolean invincibleMode = true; // set the invincibility to false
     boolean keyChange = false; // set the i key change to false
     private Timer timer; // time for 5 second invincibility mode
+    private InGameMusic m_PelletSound;
 
     private Manager(Group root) { // changed constructor to private
         this.root = root;
@@ -480,7 +480,7 @@ public class Manager {
                 if ((cookieCenterY >= pacmanTopEdge && cookieCenterY <= pacmanBottomEdge)
                         && (pacmanRightEdge >= cookieLeftEdge && pacmanRightEdge <= cookieRightEdge)) {
                     if (cookie.isVisible()) {
-                        this.score += cookie.getValue();
+                        this.score += cookie.getM_Value();
                         this.cookiesEaten++;
                     }
                     cookie.hide();
@@ -489,7 +489,7 @@ public class Manager {
                 if ((cookieCenterY >= pacmanTopEdge && cookieCenterY <= pacmanBottomEdge)
                         && (pacmanLeftEdge >= cookieLeftEdge && pacmanLeftEdge <=cookieRightEdge)){
                     if (cookie.isVisible()) {
-                        this.score += cookie.getValue();
+                        this.score += cookie.getM_Value();
                         this.cookiesEaten++;
                     }
                     cookie.hide();
@@ -499,7 +499,7 @@ public class Manager {
                 if ((cookieCenterX >= pacmanLeftEdge && cookieCenterX <= pacmanRightEdge)
                         && (pacmanBottomEdge >= cookieTopEdge && pacmanBottomEdge <=cookieBottomEdge)){
                     if (cookie.isVisible()) {
-                        this.score += cookie.getValue();
+                        this.score += cookie.getM_Value();
                         this.cookiesEaten++;
                     }
                     cookie.hide();
@@ -508,7 +508,7 @@ public class Manager {
                 if ((cookieCenterX >= pacmanLeftEdge && cookieCenterX <= pacmanRightEdge
                 ) && (pacmanTopEdge <= cookieBottomEdge && pacmanTopEdge >=cookieTopEdge)){
                     if (cookie.isVisible()) {
-                        this.score += cookie.getValue();
+                        this.score += cookie.getM_Value();
                         this.cookiesEaten++;
                     }
                     cookie.hide();

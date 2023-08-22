@@ -77,7 +77,6 @@ public class Maze {
         return false;
     }
 
-
     // Function that checks if m_Obstacles are touching each other
     // Renamed parameters to match consistent conventions
     // Deleted variable isTouching, not needed

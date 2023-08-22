@@ -9,7 +9,6 @@
  */
 package model;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -30,22 +29,21 @@ public class HighScore {
      * Reading and writing high score data to a file and displays the list of high scores.
      */
 
-    private String playerName;
-    private int highScore;
-    public ListView<String> highScoreList = new ListView<>();
-    private final String filepath = "/Users/Garundi/Desktop/prototype-pacman/code/src/view/resources/highcores_player.txt";
-    private final ObservableList<String> dataList = FXCollections.observableArrayList();
+    private String m_PlayerName;
+    private int m_HighScore;
+    public ListView<String> m_HighScoreList = new ListView<>();
+    private final String m_Filepath = "/Users/Garundi/Desktop/prototype-pacman/codeV2/code-clone/src/view/resources/highscores_player.txt";
+    private final ObservableList<String> m_DataList = FXCollections.observableArrayList();
 
     /**
      * HighScore instance with the specified player name and high score.
      *
-     * @param playerName Name of player.
+     * @param m_PlayerName Name of player.
      * @param highScore  High score achieved by player.
      */
-    public HighScore(String playerName, int highScore){
-
+    public HighScore(String m_PlayerName, int highScore){
         // Set the player name and scores
-        this.setPlayerName(playerName);
+        this.setM_PlayerName(m_PlayerName);
         this.setHighScore(highScore);
 
         // Add the names to the high score list in the .txt file
@@ -57,11 +55,11 @@ public class HighScore {
         // Create UI Components
         Label highScoreLabel = new Label("High Scores");
         this.GetHighScoreList();
-        highScoreList.setPrefHeight(200);
+        m_HighScoreList.setPrefHeight(200);
 
         // Layout
         VBox layout = new VBox(10); //vertical layout
-        layout.getChildren().addAll(highScoreList);
+        layout.getChildren().addAll(m_HighScoreList);
 
         // Set the scene
         Scene highScoreScene = new Scene(layout, 300, 300);
@@ -78,17 +76,17 @@ public class HighScore {
      * @return player name.
      */
     // Getters and Setters
-    public String getPlayerName() {
-        return playerName;
+    public String getM_PlayerName() {
+        return m_PlayerName;
     }
 
     /**
      * Sets player name.
      *
-     * @param playerName player name to set.
+     * @param m_PlayerName player name to set.
      */
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    public void setM_PlayerName(String m_PlayerName) {
+        this.m_PlayerName = m_PlayerName;
     }
 
     /**
@@ -97,7 +95,7 @@ public class HighScore {
      * @return high score.
      */
     public int getHighScore() {
-        return highScore;
+        return m_HighScore;
     }
 
     /**
@@ -106,7 +104,7 @@ public class HighScore {
      * @param highScore high score to set.
      */
     public void setHighScore(int highScore) {
-        this.highScore = highScore;
+        this.m_HighScore = highScore;
     }
 
     /**
@@ -115,13 +113,13 @@ public class HighScore {
     public void GetHighScoreList(){
         // Looking into an exel file retrieve the data
         try{
-            File highScoreFile = new File(filepath);
+            File highScoreFile = new File(m_Filepath);
             Scanner reader = new Scanner(highScoreFile);
             while(reader.hasNextLine()){
                 String data = reader.nextLine();
                 // append the data to the list view
-                dataList.add(data);
-                highScoreList.setItems(dataList);
+                m_DataList.add(data);
+                m_HighScoreList.setItems(m_DataList);
             }
             reader.close();
         } catch (FileNotFoundException e){
@@ -137,11 +135,11 @@ public class HighScore {
         // Looking into an exel file retrieve the data
         try
         {
-            FileWriter fw = new FileWriter(filepath, true);
+            FileWriter fw = new FileWriter(m_Filepath, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 
-            pw.println(playerName + "  " + highScore);
+            pw.println(m_PlayerName + "  " + m_HighScore);
             System.out.println("Data Successfully appended into file");
             pw.flush();
             fw.close();

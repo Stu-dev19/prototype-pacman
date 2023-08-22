@@ -53,7 +53,8 @@ public class Score {
         this.setM_score(new Text(Tiles.getMaxRectangleThickness() * SCORE_HORIZONTAL_THICKNESS,
                 Tiles.getMaxRectangleThickness() * SCORE_VERTICAL_THICKNESS, m_scoreValue), root);
         this.setM_lives(new Text(Tiles.getMaxRectangleThickness() * LIVES_HORIZONTAL_THICKNESS,
-                Tiles.getMaxRectangleThickness() * LIVES_VERTICAL_THICKNESS, m_liveValue), root); // BCC Rule 3; changed spelling of lifes to lives
+                Tiles.getMaxRectangleThickness() * LIVES_VERTICAL_THICKNESS, m_liveValue), root);
+        // BCC Rule 3; changed spelling of lifes to lives
 
         // Change the score text's color and font
         getM_score().setFill(Color.MAGENTA);

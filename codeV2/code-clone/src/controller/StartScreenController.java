@@ -19,15 +19,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.Manager;
-import model.Tiles;
+import view.cursor.CustomCursor;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,7 +36,7 @@ import java.util.ResourceBundle;
 public class StartScreenController implements Initializable {
 
     @FXML
-    private Button button;
+    private Button button; // Used in StartScreen.fxml
 
     /**
      * Initialises the controller.
@@ -58,7 +56,8 @@ public class StartScreenController implements Initializable {
      * @throws IOException If an error occurs during I/O operations.
      */
     @FXML
-    public void startButtonClicked(javafx.event.ActionEvent actionEvent) throws IOException {
+    public void startButtonClicked(javafx.event.ActionEvent actionEvent)
+            throws URISyntaxException {
         // Create UI components
         TextField playerNameInput = new TextField();
         Label nameLabel = new Label("Player Name: ");
@@ -74,9 +73,15 @@ public class StartScreenController implements Initializable {
         //Create a new scene for the player input
         Scene scene = new Scene(playerDisplay, 200, 150);
 
+        // Create cursor
+        CustomCursor cursor = new CustomCursor();
+        cursor.CreateCursor(scene);
+
         //Set the stage and display the input
         Stage stage1 = new Stage();
         stage1.setTitle("Input Player Name");
+        stage1.setWidth(300);
+        stage1.setHeight(300);
         stage1.setScene(scene);
         stage1.show();
 

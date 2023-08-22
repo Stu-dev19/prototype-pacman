@@ -15,12 +15,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.cursor.CustomCursor;
+import view.sound.InGameMusic;
 
 /**
  * Main class which is the entry point for the Pacman game.
  * initialises and sets up the primary stage, loading the start screen.
  */
 public class Main extends Application {
+
+    private static Stage m_FirstStage;
 
     /**
      * start method called when the JavaFX application is launched.
@@ -34,9 +38,17 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../controller/StartScreen.fxml"));
 
         // Declare and show the first screen, the title page
-        primaryStage.setScene(new Scene(root)); // set the start screen
-        primaryStage.setTitle( "Pacman" ); // set the title of the start screen
+        Scene scene1 = new Scene(root);
+
+        //Play the music
+        InGameMusic music = new InGameMusic();
+        music.PacmanMusic();
+
+        // Set the scene and show
+        primaryStage.setScene(scene1); // set the start screen
+        primaryStage.setTitle("Pacman"); // set the title of the start screen
         primaryStage.show(); // show the start screen
+        m_FirstStage = primaryStage;
     }
 
     public static void main(String[] args) {

@@ -28,7 +28,6 @@ public class Main extends Application {
      * @param primaryStage primary stage for the JavaFX application.
      * @throws Exception If an error occurs during the initialisation
      */
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Load the first instance of the screen

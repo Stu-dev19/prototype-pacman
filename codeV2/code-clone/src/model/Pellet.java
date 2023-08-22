@@ -1,5 +1,3 @@
-package model;
-
 /**
  * Pellet.java <br>
  * Date created: 21 Aug 2023 <br> <br>
@@ -9,8 +7,7 @@ package model;
  * @author Muhammad Sohail
  * @version 1.0
  */
-
-
+package model;
 // JavaFx and other java imports
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -18,12 +15,11 @@ import javafx.scene.shape.Circle;
 // **Renamed Cookie class to Pellet, due to original name for the game**
 // Class Pellet are objects Pacman collects in the game
 // To win Pacman must collect all the pellets in the game with the number of lives
+/**
+ * Pellet class shows the objects that Pacman will collect in the game.
+ * All pellets must be collected to win the game, while only having 3 lives.
+ */
 public class Pellet extends Circle {
-
-    /**
-     * Pellet class shows the objects that Pacman will collect in the game.
-     * All pellets must be collected to win the game, while only having 3 lives.
-     */
 
     private int value; // Cannot justify why value is used here
     private double x_cor;
@@ -32,14 +28,13 @@ public class Pellet extends Circle {
     // Public Getter and Setter methods to support encapsulation ***
 
     // Get the value of the value?
-    public int getValue() {
-        return value;
-    }
-
     /**
      * Gets the point value of the pellet.
      * @return point value of the pellet.
      */
+    public int getValue() {
+        return value;
+    }
 
     // Set the value of value
 
@@ -51,15 +46,13 @@ public class Pellet extends Circle {
         this.value = value;
     }
 
-    public double getX_cor() {
-        return x_cor;
-    }
-
     /**
      * Gets the x-coordinate of the pellet.
      * @return x-coordinate of the pellet.
      */
-
+    public double getX_cor() {
+        return x_cor;
+    }
 
     /**
      * Sets the x-coordinate of the pellet.
@@ -69,7 +62,6 @@ public class Pellet extends Circle {
         this.x_cor = x_cor;
     }
 
-
     /**
      * Gets the y-coordinate of the pellet.
      * @return y-coordinate of the pellet.
@@ -77,7 +69,6 @@ public class Pellet extends Circle {
     public double getY_cor() {
         return y_cor;
     }
-
 
     /**
      * Sets the y-coordinate of the pellet.
@@ -90,14 +81,13 @@ public class Pellet extends Circle {
 
     // Constructor class takes in two parameters x and y for the pellets
     // Creates a 2D circle in a brownish color
+    /**
+     * Constructs a Pellet with the specified coordinates.
+     * Pellet is shown as a brown circle.
+     * @param x x-coordinate of the pellet.
+     * @param y y-coordinate of the pellet.
+     */
     public Pellet(double x, double y) {
-
-        /**
-         * Constructs a Pellet with the specified coordinates.
-         * Pellet is shown as a brown circle.
-         * @param x x-coordinate of the pellet.
-         * @param y y-coordinate of the pellet.
-         */
 
         this.setX_cor(x);
         this.setY_cor(y);

@@ -46,7 +46,6 @@ public class StartScreenController implements Initializable {
      * @param url            The location used to find relative paths.
      * @param resourceBundle The resources used for gameplay.
      */
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -58,7 +57,6 @@ public class StartScreenController implements Initializable {
      * @param actionEvent The event processed by clicking the start button.
      * @throws IOException If an error occurs during I/O operations.
      */
-
     @FXML
     public void startButtonClicked(javafx.event.ActionEvent actionEvent) throws IOException {
         // Create UI components

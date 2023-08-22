@@ -28,13 +28,12 @@ import java.util.*;
 // Class manager manages the whole system
 // Classes need to be delegated to other classes
 // MVC pattern needs to be added for organisation
+/**
+ * Manager class handles the entire game system which includes player movement, collisions, scoring,
+ * and game state. Handles Pacman, ghosts, pellets, and game mechanics.
+ * Manager follows a singleton pattern to ensure only one instance is created.
+ */
 public class Manager {
-
-    /**
-     * Manager class handles the entire game system which includes player movement, collisions, scoring,
-     * and game state. Handles Pacman, ghosts, pellets, and game mechanics.
-     * Manager follows a singleton pattern to ensure only one instance is created.
-     */
 
     // Member variables
     private final Pacman pacman;
@@ -77,7 +76,6 @@ public class Manager {
     }
 
     // Singleton for Manager object
-
     /**
      * Creates a single instance of the Manager class
      *

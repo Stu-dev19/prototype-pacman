@@ -17,30 +17,24 @@ import java.util.Set;
 
 // Class maze is a collection of m_Obstacles
 // This class uses a lot of unnecessary indentation so simplifying this class is needed
+/**
+ * Maze class represents the obstacles in the game.
+ * Contains methods to check for collisions and obstacles within the maze.
+ */
 public class Maze {
-
-    /**
-     * Maze class represents the obstacles in the game.
-     * Contains methods to check for collisions and obstacles within the maze.
-     */
 
     // Set public member variables to private: Encapsulation
     // Class variables to m_
     private Set<Tiles> m_Tiles;
-
-    // Getters and Setters
-    public Set<Tiles> getM_Obstacles() {
-        return m_Tiles;
-    }
 
     /**
      * Get the set of obstacles for the maze.
      *
      * @return set of obstacles.
      */
-
-    public void setM_Obstacles(Set<Tiles> m_Tiles) {
-        this.m_Tiles = m_Tiles;
+    // Getters and Setters
+    public Set<Tiles> getM_Obstacles() {
+        return m_Tiles;
     }
 
     /**
@@ -48,29 +42,30 @@ public class Maze {
      *
      * @param m_Tiles set of obstacles to set.
      */
+    public void setM_Obstacles(Set<Tiles> m_Tiles) {
+        this.m_Tiles = m_Tiles;
+    }
 
     // Constructor changed to be public for Manager class
+    /**
+     * Creates a Maze object with an empty set of obstacles.
+     */
     public Maze() {
         setM_Obstacles(new HashSet<>());
     }
 
-    /**
-     * Creates a Maze object with an empty set of obstacles.
-     */
-
     // Function that checks if the current object with coordinates x and y
     // are touching the hashset of m_Obstacles
     // Changed 'Boolean' to 'boolean' for primitive boolean variables
+    /**
+     * Checks if a point (x, y) is touching any obstacles in the maze.
+     *
+     * @param x       x-coordinate of the point.
+     * @param y       y-coordinate of the point.
+     * @param padding padding around the point.
+     * @return True if point is touching an obstacle otherwise false.
+     */
     public boolean isTouching(double x, double y, double padding) {
-
-        /**
-         * Checks if a point (x, y) is touching any obstacles in the maze.
-         *
-         * @param x       x-coordinate of the point.
-         * @param y       y-coordinate of the point.
-         * @param padding padding around the point.
-         * @return True if point is touching an obstacle otherwise false.
-         */
 
         // For loop checking conditions for collisions across entire rectangle
         for (Tiles tiles : getM_Obstacles()) {
@@ -86,17 +81,16 @@ public class Maze {
     // Function that checks if m_Obstacles are touching each other
     // Renamed parameters to match consistent conventions
     // Deleted variable isTouching, not needed
+    /**
+     * Check if obstacles are present within a given region.
+     *
+     * @param x_from starting x-coordinate of the region.
+     * @param x_to   ending x-coordinate of the region.
+     * @param y_from starting y-coordinate of the region.
+     * @param y_to   ending y-coordinate of the region.
+     * @return True if obstacles present within the region otherwise false.
+     */
     public Boolean hasObstacle(double x_from,  double x_to, double y_from, double y_to) {
-
-        /**
-         * Check if obstacles are present within a given region.
-         *
-         * @param x_from starting x-coordinate of the region.
-         * @param x_to   ending x-coordinate of the region.
-         * @param y_from starting y-coordinate of the region.
-         * @param y_to   ending y-coordinate of the region.
-         * @return True if obstacles present within the region otherwise false.
-         */
 
         for (double i = x_from; i < x_to; i++) {
             for (double j = y_from; j < y_to; j++) {
@@ -113,13 +107,12 @@ public class Maze {
     // using magic numbers
     // This function is not appropriate and must be reduced: violates BCC Rule 3
     // It appears to be created a frame around the board and the islands in between
+    /**
+     * Creates obstacles in the maze and places them in a specific pattern.
+     *
+     * @param root JavaFX root node to add the obstacles.
+     */
     public void CreateMaze(Group root) {
-
-        /**
-         * Creates obstacles in the maze and places them in a specific pattern.
-         *
-         * @param root JavaFX root node to add the obstacles.
-         */
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~ frame ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         this.getM_Obstacles().add(new Tiles(0, 0, "horizontal", 48)); //top

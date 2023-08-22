@@ -1,5 +1,3 @@
-package model;
-
 /**
  * Score.java <br>
  * Date created: 21 Aug 2023 <br> <br>
@@ -9,7 +7,7 @@ package model;
  * @author Muhammad Sohail
  * @version 1.0
  */
-
+package model;
 // JavaFx and java imports
 import javafx.scene.Group;
 import javafx.scene.paint.Color;

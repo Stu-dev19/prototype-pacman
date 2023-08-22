@@ -1,5 +1,3 @@
-package model;
-
 /**
  * model.java <br>
  * Date created: 21 Aug 2023 <br> <br>
@@ -9,6 +7,7 @@ package model;
  * @author Muhammad Sohail
  * @version 1.0
  */
+package model;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -37,14 +36,13 @@ public class HighScore {
     private final String filepath = "/Users/Garundi/Desktop/prototype-pacman/code/src/view/resources/highcores_player.txt";
     private final ObservableList<String> dataList = FXCollections.observableArrayList();
 
+    /**
+     * HighScore instance with the specified player name and high score.
+     *
+     * @param playerName Name of player.
+     * @param highScore  High score achieved by player.
+     */
     public HighScore(String playerName, int highScore){
-
-        /**
-         * HighScore instance with the specified player name and high score.
-         *
-         * @param playerName Name of player.
-         * @param highScore  High score achieved by player.
-         */
 
         // Set the player name and scores
         this.setPlayerName(playerName);
@@ -74,19 +72,14 @@ public class HighScore {
         stage.show();
     }
 
-    // Getters and Setters
-    public String getPlayerName() {
-        return playerName;
-    }
-
     /**
      * Retrieves player name.
      *
      * @return player name.
      */
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    // Getters and Setters
+    public String getPlayerName() {
+        return playerName;
     }
 
     /**
@@ -94,9 +87,8 @@ public class HighScore {
      *
      * @param playerName player name to set.
      */
-
-    public int getHighScore() {
-        return highScore;
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     /**
@@ -104,9 +96,8 @@ public class HighScore {
      *
      * @return high score.
      */
-
-    public void setHighScore(int highScore) {
-        this.highScore = highScore;
+    public int getHighScore() {
+        return highScore;
     }
 
     /**
@@ -114,13 +105,15 @@ public class HighScore {
      *
      * @param highScore high score to set.
      */
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
+    }
 
+    /**
+     * Retrieves the high score list and populates the list view.
+     */
     public void GetHighScoreList(){
         // Looking into an exel file retrieve the data
-
-        /**
-         * Retrieves the high score list and populates the list view.
-         */
         try{
             File highScoreFile = new File(filepath);
             Scanner reader = new Scanner(highScoreFile);
@@ -137,13 +130,11 @@ public class HighScore {
         }
     }
 
+    /**
+     * Updates the player's name and high score to the high score file.
+     */
     public void UpdateHighScoreList(){
         // Looking into an exel file retrieve the data
-
-        /**
-         * Updates the player's name and high score to the high score file.
-         */
-
         try
         {
             FileWriter fw = new FileWriter(filepath, true);
